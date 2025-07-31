@@ -1,15 +1,28 @@
-﻿namespace Dorixona.Domain.Models.PillsModel.PillDTO;
-public class FilterPillDTO
-{
-    public string? Name { get; set; }                // "Paracetamol", "Ibuprofen" kabi
-    public string? Manufacturer { get; set; }        // "Berlin-Chemie", "UzPharm"
-    public decimal? MinPrice { get; set; }           // Eng kam narx
-    public decimal? MaxPrice { get; set; }           // Eng katta narx
-    public string? Form { get; set; }                // "Tabletka", "Sirop", "Kapsula"
-    public DateTime? MinExpiryDate { get; set; }     // Eng erta yaroqlilik muddati
-    public DateTime? MaxExpiryDate { get; set; }     // Eng kech yaroqlilik muddati
-    public string? Dosage { get; set; }              // "500mg", "100ml"
-    public int? MinStockQuantity { get; set; }       // Ombordagi kamida qancha bo‘lsin
-    public int? MaxStockQuantity { get; set; }       // Ombordagi eng ko‘pi
+﻿using Dorixona.Domain.Enums;
 
+namespace Dorixona.Domain.Models.PillsModel.PillDTO;
+
+public class FilterPillDto
+{
+    public string? Name { get; set; }                       // "Paracetamol", "Ibuprofen"
+    public string? Manufacturer { get; set; }               // "Berlin-Chemie", "UzPharm"
+    public string? Search { get; set; }
+    public decimal? MinPrice { get; set; }                  // Narx: minimal
+    public decimal? MaxPrice { get; set; }                  // Narx: maksimal
+
+    public PillType? PillType { get; set; }                 // "Tabletka", "Sirop", "Kapsula"
+
+    public DateTime? MinExpiryDate { get; set; }            // Yaroqlilik muddati: eng erta
+    public DateTime? MaxExpiryDate { get; set; }            // Yaroqlilik muddati: eng kech
+
+    public string? Dosage { get; set; }                     // "500mg", "100ml"
+
+    public int? MinStockQuantity { get; set; }              // Ombor miqdori: minimal
+    public int? MaxStockQuantity { get; set; }              // Ombor miqdori: maksimal
+
+    public Guid? PharmacyId { get; set; }                   // Qaysi aptekaga tegishli
+
+    // Qo‘shimcha imkoniyatlar:
+    public bool? IsPrescriptionRequired { get; set; }       // Reçeta bilanmi yo‘qmi
+    public Guid? CategoryId { get; set; }                   // Kategoriyaga bog‘liq holda filter
 }
