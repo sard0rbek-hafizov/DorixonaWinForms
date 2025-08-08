@@ -35,6 +35,7 @@ public class User : BaseParams
     public bool IsEmailConfirmed { get; set; } = false;
     public bool IsPhoneConfirmed { get; set; } = false;
     public bool IsTwoFactorEnabled { get; set; } = false;
+    public DateTime? EmailVerifiedAt { get; private set; }
 
     public int AccessFailedCount { get; set; } = 0;
     public DateTime? LockoutEnd { get; set; }
@@ -47,7 +48,17 @@ public class User : BaseParams
 
     // Soft Delete
     public bool IsDeleted { get; set; } = false;
-
     // Computed property
     public string FullName => $"{FirstName} {LastName} {MiddleName}";
+    public User(string firstName, string lastName, string? middleName, string email, string password, string? phoneNumber)
+    {
+        FirstName = firstName;
+        LastName = lastName;
+        MiddleName = middleName;
+        Email = email;
+        PasswordHash = BCrypt.Net.BCrypt.HashPassword(password);
+        PhoneNumber = phoneNumber;
+        RegisteredAt = DateTime.UtcNow;
+    }
+    public User() { }
 }

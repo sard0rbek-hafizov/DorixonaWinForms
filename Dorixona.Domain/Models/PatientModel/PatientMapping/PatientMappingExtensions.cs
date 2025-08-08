@@ -12,13 +12,13 @@ public class PatientMappingProfile : Profile
     {
         // CreateDto -> Entity
         CreateMap<PatientCreateDto, Patient>()
-            .ForMember(dest => dest.PasswordHash, opt => opt.Ignore()) // Parolni hashing controller/service da bo'ladi
-            .ForMember(dest => dest.Role, opt => opt.MapFrom(src => Role.Patient))
-            .ForMember(dest => dest.Status, opt => opt.MapFrom(src => UserStatus.Active))
-            .ForMember(dest => dest.IsEmailConfirmed, opt => opt.MapFrom(_ => false))
-            .ForMember(dest => dest.IsPhoneConfirmed, opt => opt.MapFrom(_ => false))
-            .ForMember(dest => dest.RegisteredAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
-            .ForMember(dest => dest.IsDeleted, opt => opt.MapFrom(_ => false))
+            //.ForMember(dest => dest.Pa, opt => opt.Ignore()) // Parolni hashing controller/service da bo'ladi
+            //.ForMember(dest => dest.Role, opt => opt.MapFrom(src => Role.Patient))
+            //.ForMember(dest => dest.Status, opt => opt.MapFrom(src => UserStatus.Active))
+            //.ForMember(dest => dest.IsEmailConfirmed, opt => opt.MapFrom(_ => false))
+            //.ForMember(dest => dest.IsPhoneConfirmed, opt => opt.MapFrom(_ => false))
+            //.ForMember(dest => dest.RegisteredAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
+            //.ForMember(dest => dest.IsDeleted, opt => opt.MapFrom(_ => false))
             .ForMember(dest => dest.CreateDate, opt => opt.MapFrom(_ => DateTime.UtcNow))
             .ForMember(dest => dest.UpdateDate, opt => opt.MapFrom(_ => DateTime.UtcNow))
             .ForMember(dest => dest.DeleteDate, opt => opt.MapFrom(_ => (DateTime?)null));
@@ -33,8 +33,8 @@ public class PatientMappingProfile : Profile
 
         // StatusUpdateDto -> Entity
         CreateMap<PatientStatusUpdateDto, Patient>()
-            .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status))
-            .ForMember(dest => dest.IsDeleted, opt => opt.MapFrom(src => src.IsDeleted))
+            //.ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status))
+            //.ForMember(dest => dest.IsDeleted, opt => opt.MapFrom(src => src.IsDeleted))
             .ForMember(dest => dest.UpdateDate, opt => opt.MapFrom(_ => DateTime.UtcNow));
 
 

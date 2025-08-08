@@ -11,7 +11,7 @@ public class AdminSummarySpec : ISpecification<Admin>
     a => a.User!
 };
 
-    public Func<IQueryable<Admin>, IOrderedQueryable<Admin>>? OrderBy => q => q.OrderByDescending(a => a.CreatedAt);
+    public Func<IQueryable<Admin>, IOrderedQueryable<Admin>>? OrderBy => q => q.OrderByDescending(a => a.CreateDate);
     public int? Skip => 0;
     public int? Take => 1;
 }

@@ -1,8 +1,22 @@
 ﻿using Dorixona.Domain.Abstractions;
+using Dorixona.Domain.Enums;
 using System.ComponentModel.DataAnnotations;
 namespace Dorixona.Domain.Models.PatientModel.PatientEntities;
 public class Patient : BaseParams
 {
+    [Required]
+    public string FirstName { get; set; }
+    [Required]
+    public string LastName { get; set; }
+    [Required]
+    public string MiddleName { get; set; }
+    [Required]
+    public string Email { get; set; }
+    [Required]
+    public string Gender { get; set; }
+    [Required]
+    public string PhoneNumber { get; set; }
+    public DateTime RegisteredAt { get; set; }
     [Required]
     public DateTime BirthDate { get; set; }
 
@@ -25,4 +39,7 @@ public class Patient : BaseParams
 
     // Computed property for Age
     public int Age => DateTime.UtcNow.Year - BirthDate.Year;
+    public UserStatus? Status { get; set; }
+    public bool? IsDeleted { get; set; }
+    public string PasswordHash { get; set; }
 }

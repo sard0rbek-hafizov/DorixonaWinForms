@@ -1,11 +1,23 @@
 ﻿namespace Dorixona.Domain.Abstractions;
-public class Error
+
+public sealed record Error(string Code, string Message)
 {
-    public string Message { get; set; }
-    public string Code { get; set; }
-    public Error(string message, string code)
-    {
-        Message = message;
-        Code = code;
-    }
+    public static readonly Error None = new(string.Empty, string.Empty);
+
+    public static Error Validation(string message) =>
+        new("Validation", message);
+
+    public static Error Failure(string code, string message) =>
+        new(code, message);
+
+    public static Error NotFound(string entity, object key) =>
+        new("NotFound", $"{entity} with key '{key}' was not found.");
+
+    public static Error Conflict(string message) =>
+        new("Conflict", message);
+
+    public static Error Unauthorized(string message) =>
+        new("Unauthorized", message);
+
+    public override string ToString() => $"[{Code}] {Message}";
 }

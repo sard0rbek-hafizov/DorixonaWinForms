@@ -1,4 +1,5 @@
-﻿using Dorixona.Domain.Models.AdminModel.AdminEntities;
+﻿using Dorixona.Domain.Enums;
+using Dorixona.Domain.Models.AdminModel.AdminEntities;
 using System.Linq.Expressions;
 
 namespace Dorixona.Domain.Models.AdminModel.AdminSpecifications;
