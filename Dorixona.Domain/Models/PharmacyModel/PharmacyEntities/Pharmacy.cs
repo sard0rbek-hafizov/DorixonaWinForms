@@ -31,6 +31,8 @@ public class Pharmacy : BaseParams
     [Required]
     public Guid OwnerId { get; set; }
 
+    [StringLength(50)]
+    public string LicenseNumber { get; set; } = string.Empty;
     public UserStatus Status { get; set; } = UserStatus.Active;
 
     // Navigation property (bog'liq dori ro'yxati)

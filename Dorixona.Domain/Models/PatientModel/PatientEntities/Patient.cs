@@ -16,6 +16,7 @@ public class Patient : BaseParams
     public string Gender { get; set; }
     [Required]
     public string PhoneNumber { get; set; }
+    public string PassportNumber { get; set; }
     public DateTime RegisteredAt { get; set; }
     [Required]
     public DateTime BirthDate { get; set; }
