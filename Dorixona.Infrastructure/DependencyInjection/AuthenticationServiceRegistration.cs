@@ -1,6 +1,4 @@
-﻿using Dorixona.Application.Interfaces;
-using Dorixona.Application.Services.Auth;
-using Dorixona.Domain.Models.AuthModel.Repositories;
+﻿using Dorixona.Application.Services.Auth;
 using Dorixona.Infrastructure.Authentication.Identity;
 using Dorixona.Infrastructure.Authentication.Jwt;
 using Dorixona.Infrastructure.Authentication.RefreshTokens;
@@ -10,7 +8,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using Dorixona.Infrastructure.Authentication.RefreshTokens;
 using System.Text;
 
 namespace Dorixona.Infrastructure.DependencyInjection
@@ -82,4 +79,9 @@ namespace Dorixona.Infrastructure.DependencyInjection
             return services;
         }
     }
+}
+
+public class ApplicationRole : IdentityRole<Guid>
+{
+    public string? Description { get; set; }
 }

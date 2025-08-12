@@ -1,32 +1,33 @@
 ﻿using Dorixona.Infrastructure.Authentication.Identity;
+using Dorixona.Infrastructure.Data.DbContexts;
 using Microsoft.EntityFrameworkCore;
 namespace Dorixona.Infrastructure.Authentication.RefreshTokens;
 
 public class RefreshTokenRepository : IRefreshTokenRepository4
 {
-    private readonly IdentityDbContext _context;
+    private readonly ApplicationDbContext _applicationDbContext;
 
-    public RefreshTokenRepository(IdentityDbContext context)
+    public RefreshTokenRepository(ApplicationDbContext applicationDbContext)
     {
-        _context = context;
+        _applicationDbContext = applicationDbContext;
     }
 
     public async Task<RefreshToken?> GetByTokenAsync(string token)
     {
-        return await _context.Set<RefreshToken>()
+        return await _applicationDbContext.Set<RefreshToken>()
             .AsNoTracking()
             .FirstOrDefaultAsync(rt => rt.Token == token);
     }
 
     public async Task AddAsync(RefreshToken refreshToken)
     {
-        await _context.Set<RefreshToken>().AddAsync(refreshToken);
-        await _context.SaveChangesAsync();
+        await _applicationDbContext.Set<RefreshToken>().AddAsync(refreshToken);
+        await _applicationDbContext.SaveChangesAsync();
     }
 
     public async Task UpdateAsync(RefreshToken refreshToken)
     {
-        _context.Set<RefreshToken>().Update(refreshToken);
-        await _context.SaveChangesAsync();
+        _applicationDbContext.Set<RefreshToken>().Update(refreshToken);
+        await _applicationDbContext.SaveChangesAsync();
     }
 }

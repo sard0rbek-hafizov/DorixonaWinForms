@@ -8,4 +8,17 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Dorixona.Application\Dorixona.Application.csproj" />
+    <ProjectReference Include="..\Dorixona.Domain\Dorixona.Domain.csproj" />
+    <ProjectReference Include="..\Dorixona.Infrastructure\Dorixona.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
